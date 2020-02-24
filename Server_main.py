@@ -2,7 +2,7 @@ import network.IpHandler as Ip
 import logging
 
 """
-this File is The main Program file 
+this File is The Server main Program file 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This is where all the sub files are Called
 """

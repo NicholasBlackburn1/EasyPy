@@ -4,10 +4,11 @@
 import requests
 import socket
 import logging
+import toml
 
 
 """
-IP Address Handler 
+Server IP Address Handler 
 ~~~~~~~~~~~~~~~~~~~
 
 A Simple IP Address Handler written in Python, for human beings.
@@ -20,15 +21,18 @@ usage:
 # Logging for Ips
 logging.basicConfig(filename='Ip.log', level=logging.DEBUG)
 
-Server_UDP_IP = input("ipaddress\n")
-Server_UDP_PORT = input('PORT\n')
+# Booleans for Checking States
+server_local = False
+server_public = False
 
 
-# Gets Client Info (like IP and Public Ip )
+def readConfig():
+    logging.info("config loading")
 
 
-def getClientIP():
-    logging.info("Loaded Client IP")
+def getServerIP(args):
+    global server_local
+    global server_public
 
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
@@ -42,8 +46,16 @@ def getClientIP():
     logging.debug("Your Computer IP Address is:" + IPAddr)
     logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
+    if (server_local):
+        logging.debug("User Set Server to Be Local ")
 
-def setServerIP():
-    logging.warning("STARTING to Connect to  UDP Server")
-    logging.info("ServerIP" + Server_UDP_IP)
-    logging.info("ServerPORT" + Server_UDP_PORT)
+    if (server_public):
+        logging.debug("User Set Server to Be Public")
+
+    else:
+        print("set server in Online / offline mode to continue")
+        logging.fatal("set server in Online / offline mode to continue")
+
+
+def startServer(args):
+    print("")
