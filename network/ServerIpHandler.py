@@ -8,14 +8,14 @@ import toml
 
 
 """
-Server IP Address Handler 
+Server IP Address Handler
 ~~~~~~~~~~~~~~~~~~~
 
 A Simple IP Address Handler written in Python, for human beings.
-usage: 
->>> getClient() -> Gets Client Ip address  prints it out
+usage:
+>>> readConfig-> Gets Client Ip address  prints it out
 
->>> setServerIP() -> Sets Connection Ip  to Server Via Function
+>>> setServerIP() -> gets Ip to Server Via Function
 """
 
 # Logging for Ips
@@ -25,12 +25,24 @@ logging.basicConfig(filename='Ip.log', level=logging.DEBUG)
 server_local = False
 server_public = False
 
+parstoml = [""]
+
 
 def readConfig():
+    global parstoml
     logging.info("config loading")
 
+    # Loads ServerConfig
+    Config = toml.loads("ServerConfig.Toml")
 
-def getServerIP(args):
+    # reads ServerConfig
+
+    logging.info(Config)
+    # logging.debug()
+
+
+def getServerIP():
+    global parstoml
     global server_local
     global server_public
 
@@ -46,10 +58,10 @@ def getServerIP(args):
     logging.debug("Your Computer IP Address is:" + IPAddr)
     logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
-    if (server_local):
+    if (parstoml == [0]):
         logging.debug("User Set Server to Be Local ")
 
-    if (server_public):
+    if (parstoml == [1]):
         logging.debug("User Set Server to Be Public")
 
     else:

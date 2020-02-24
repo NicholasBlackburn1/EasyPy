@@ -1,4 +1,4 @@
-import network.IpHandler as Ip
+import network.ServerIpHandler as Ip
 import logging
 
 """
@@ -8,8 +8,6 @@ This is where all the sub files are Called
 """
 logging.basicConfig(filename="main.log", level=logging.DEBUG)
 
-logging.info("Getting Client Ip")
-Ip.getClientIP()
-
 logging.info("setting Server Ip")
-Ip.setServerIP()
+Ip.readConfig()
+Ip.getServerIP()
