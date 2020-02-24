@@ -3,6 +3,7 @@
 
 import requests
 import socket
+import logging
 
 
 """
@@ -15,24 +16,40 @@ usage:
 
 >>> setServerIP() -> Sets Connection Ip  to Server Via Function
 """
-UDP_IP = input("ip")
+
+# Logging for Ips
+logging.basicConfig(filename='Ip.log', level=logging.DEBUG)
+
+Server_UDP_IP = input("ipaddress\n")
+Server_UDP_PORT = input('PORT\n')
+
+logging.info("ServerIP" + Server_UDP_IP)
+logging.info("ServerPORT" + Server_UDP_PORT)
+
+# Gets Client Info (like IP and Public Ip )
 
 
 def getClientIP():
+    logging.info("Loaded Client IP")
+
     hostname = socket.gethostname()
-
     IPAddr = socket.gethostbyname(hostname)
-
     ip = requests.get('https://checkip.amazonaws.com').text.strip()
 
-    print("Your public Ip" + ip)
-    print("Your Computer Name is:" + hostname)
-    print("Your Computer IP Address is:" + IPAddr)
+    logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    logging.debug("Your publicIp" + ip)
+    logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    logging.debug("Your Computer Name is:" + hostname)
+    logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    logging.debug("Your Computer IP Address is:" + IPAddr)
+    logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+
+def getServerIP(Server_UDP_IP):
+    print("not")
 
 
 def setServerIP():
-    global UDP_IP
 
-
-def createServerCon():
-    print(UDP_IP)
+    print("UDP target IP:", Server_UDP_IP)
+    print("UDP target port:", Server_UDP_PORT)
