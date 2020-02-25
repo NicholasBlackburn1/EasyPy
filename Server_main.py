@@ -10,4 +10,5 @@ logging.basicConfig(filename="main.log", level=logging.DEBUG)
 
 logging.info("setting Server Ip")
 Ip.readConfig()
+
 Ip.getServerIP()

@@ -4,7 +4,8 @@
 import requests
 import socket
 import logging
-import toml
+import json
+from io import StringIO
 
 
 """
@@ -21,28 +22,29 @@ usage:
 # Logging for Ips
 logging.basicConfig(filename='Ip.log', level=logging.DEBUG)
 
-# Booleans for Checking States
-server_local = False
-server_public = False
+# reads Loaded Json
 
-parstoml = [""]
+io = StringIO()
+read = []
 
 
 def readConfig():
-    global parstoml
+    global read
+
     logging.info("config loading")
 
-    # Loads ServerConfig
-    Config = toml.loads("ServerConfig.Toml")
-
     # reads ServerConfig
+    with open("ServerConfig.json", "r") as read_it:
+        data = json.load(read_it)
 
-    logging.info(Config)
-    # logging.debug()
+    # Grabs mode from json
+    read = data['mode']
+
+    logging.info("\n" + read)
 
 
 def getServerIP():
-    global parstoml
+
     global server_local
     global server_public
 
@@ -58,10 +60,10 @@ def getServerIP():
     logging.debug("Your Computer IP Address is:" + IPAddr)
     logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
-    if (parstoml == [0]):
+    if ():
         logging.debug("User Set Server to Be Local ")
 
-    if (parstoml == [1]):
+    if ():
         logging.debug("User Set Server to Be Public")
 
     else:
