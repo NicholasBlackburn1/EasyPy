@@ -12,3 +12,4 @@ logging.info("setting Server Ip")
 Ip.readConfig()
 
 Ip.getServerIP()
+Ip.startServer()

@@ -5,7 +5,7 @@ import requests
 import socket
 import logging
 import json
-import ipaddress as addr
+import helpers.IpDecode as decode
 
 
 """
@@ -74,7 +74,7 @@ def getServerIP():
 
     hostname = socket.gethostname()
 
-    ip = requests.get('https://checkip.amazonaws.com').text.strip()
+    ip = (requests.get('https://checkip.amazonaws.com').text.lower())
 
     # Logs out Your Server Public Ip Server Host name and Your Local Network Ip
     logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -101,43 +101,42 @@ def getServerIP():
         logging.debug(
             "OFFLINE MODE / INSECURE MODE ACTIVE ALL Checks Have been Disabled ")
         # Sets Server Ip To your Local Ip address
+        server_ip = IPAddr
 
-        logging.info("Set Server Ip to " + server_ip)
-
-        startServer()
+        startServer(server_ip)
 
     else:
         print("set server in Online / offline mode to continue")
         logging.fatal("set server in Online / offline mode to continue")
 
 
-def startServer():
+def startServer(server_ip):
 
-    global port
-
-    logging.critical("server ip" + server_ip + "port\n" + server_port)
+    global server_port
 
     # creates server Socket grabs socket exeptions
     logging.info(server_ip)
 
-    try:
+    udpIP = str(decode.ip_to_uint32(server_ip))
 
-        server_socket = socket.socket(
+    try:
+        # Creates Udp Scoket
+        server = socket.socket(
             socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+
+        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+        server.bind((udpIP, 9090))
+
+        logging.debug(server)
+
         logging.info("Socket successfully created")
 
     except socket.error as error:
-        logging.fatal("SOCKET FAILD WIT ERROR" + error)
+        logging.fatal("SOCKET FAILD WITh ERROR" + error)
 
-    server_socket.bind()
     logging.info("Server Socket Connected")
 
     while True:
-        server_socket.accept()
-
-        logging.warn("Server got COnnection From" + server_port)
-
-        # sends Message to Client
-        server_socket.send("Connected to User", "utf-8")
-
-        logging.info("Sent Server welcome Message")
+        data = server.recv(4096)
+        server.listen()
