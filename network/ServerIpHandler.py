@@ -103,14 +103,14 @@ def getServerIP():
         # Sets Server Ip To your Local Ip address
         server_ip = IPAddr
 
-        startServer(server_ip)
+        startServerOFFLINE(server_ip)
 
     else:
         print("set server in Online / offline mode to continue")
         logging.fatal("set server in Online / offline mode to continue")
 
 
-def startServer(server_ip):
+def startServerOFFLINE(server_ip):
 
     global server_port
 
@@ -120,7 +120,8 @@ def startServer(server_ip):
     udpIP = str(decode.ip_to_uint32(server_ip))
 
     try:
-        # Creates Udp Scoket
+        # Creates Udp Scoket with auto Ip Binding
+        # TODO: Work on UDP Port To read from json
         server = socket.socket(
             socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 
@@ -138,10 +139,12 @@ def startServer(server_ip):
     logging.info("Server Socket Connected")
 
     while True:
-        logging.debug("Server in While True")
+        logging.debug("Server is Active Wating for Client Connetion  ")
 
         data = server.recv(4096)
         server.listen()
 
-        if (data == "ClientConnect"):
-            logging.warn("ClientConnect at")
+        logging.info("Received" + data + " from the client")
+
+        if(data == "Hello server"):
+            server.send(("Hello client").encode('utf-8'))
