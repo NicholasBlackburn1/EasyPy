@@ -138,5 +138,10 @@ def startServer(server_ip):
     logging.info("Server Socket Connected")
 
     while True:
+        logging.debug("Server in While True")
+
         data = server.recv(4096)
         server.listen()
+
+        if (data == "ClientConnect"):
+            logging.warn("ClientConnect at")
