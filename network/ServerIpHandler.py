@@ -5,7 +5,7 @@ import requests
 import socket
 import logging
 import json
-from io import StringIO
+import ipaddress as addr
 
 
 """
@@ -27,7 +27,7 @@ logging.basicConfig(filename='Ip.log', level=logging.DEBUG)
 online = []
 offline = []
 port = []
-
+listen = []
 # Sets Server Ip and Port
 server_ip = ''
 server_port = ''
@@ -48,6 +48,7 @@ def readConfig():
     online = data['online']
     offline = data['offline']
     port = data['port']
+    listen = data['listener']
 
     logging.info("Loaded server mode \n")
 
@@ -56,13 +57,19 @@ def getServerIP():
 
     global online
     global offline
+    global listen
     global server_ip
     global server_port
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    # Sets local ip adress for server
-    IPAddr = s.getsockname()[0]
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        # Sets local ip adress for server
+        IPAddr = s.getsockname()[0]
+
+    except socket.gaierror as error:
+        logging.fatal("there was an error resolving the host" + error)
+
     s.close()
 
     hostname = socket.gethostname()
@@ -82,10 +89,11 @@ def getServerIP():
         logging.info("User Set Server to Be ONLINE Mode")
         # Sets Server Ip To your Public Ip address
         server_ip = ip
+
         logging.info("Set Server Ip to " + server_ip)
 
         # Starts Server With Your Public ip
-        startServer(server_ip, server_port)
+        startServer()
 
     elif (offline == True):
         logging.info("User Set Server to Be OFFLINE Mode")
@@ -93,19 +101,43 @@ def getServerIP():
         logging.debug(
             "OFFLINE MODE / INSECURE MODE ACTIVE ALL Checks Have been Disabled ")
         # Sets Server Ip To your Local Ip address
-        server_ip = IPAddr
+
         logging.info("Set Server Ip to " + server_ip)
 
-        startServer(server_ip, server_port)
+        startServer()
 
     else:
         print("set server in Online / offline mode to continue")
         logging.fatal("set server in Online / offline mode to continue")
 
 
-def startServer(server_ip, server_port):
-    print("server ip" + server_ip + "port\n" + server_port)
+def startServer():
 
-    # creates server Socket and
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    server_socket.bind((server_ip, server_port))
+    global port
+
+    logging.critical("server ip" + server_ip + "port\n" + server_port)
+
+    # creates server Socket grabs socket exeptions
+    logging.info(server_ip)
+
+    try:
+
+        server_socket = socket.socket(
+            socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+        logging.info("Socket successfully created")
+
+    except socket.error as error:
+        logging.fatal("SOCKET FAILD WIT ERROR" + error)
+
+    server_socket.bind()
+    logging.info("Server Socket Connected")
+
+    while True:
+        server_socket.accept()
+
+        logging.warn("Server got COnnection From" + server_port)
+
+        # sends Message to Client
+        server_socket.send("Connected to User", "utf-8")
+
+        logging.info("Sent Server welcome Message")
