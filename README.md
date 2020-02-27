@@ -13,4 +13,13 @@
 
 4. DOES NOT COLLECT USER DATA
 
+## Client software
+
+1. Written in Java 
+2. 
+3. uses JavaFx for Gui
+4.  
+5. client displays cpu usage, ram usage , disk io and Cpu Temp      
+
+
  

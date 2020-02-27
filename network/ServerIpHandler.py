@@ -136,8 +136,6 @@ def startServerOFFLINE(server_ip):
 
     global server_port
 
-    x = 0
-
     # creates server Socket grabs socket exeptions
     logging.info(server_ip)
 
@@ -197,7 +195,7 @@ def startServerOnline(server_ip):
 
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-        server.bind(('127.0.0.1', 9090))
+        server.bind((udpIP, 9090))
 
         logging.debug(server)
 
