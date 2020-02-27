@@ -4,8 +4,10 @@
 import requests
 import socket
 import logging
-import json
+import threading
+
 import helpers.IpDecode as decode
+import data.ServerUsage as usage
 
 
 """
@@ -48,7 +50,6 @@ def readConfig():
     online = data['online']
     offline = data['offline']
     port = data['port']
-    listen = data['listener']
 
     logging.info("Loaded server mode \n")
 
@@ -92,8 +93,18 @@ def getServerIP():
 
         logging.info("Set Server Ip to " + server_ip)
 
+        logging.debug("serverThread started")
+        # threads server
+        server_thread = threading.Thread.start(
+            target=startServerOnline(server_ip))
+
         # Starts Server With Your Public ip
-        startServer()
+        server_thread.start()
+
+        # cleanly Exits out of online server
+        if (exit(0)):
+            server_thread.join()
+            logging.warning("Python Quit Cleanly ")
 
     elif (offline == True):
         logging.info("User Set Server to Be OFFLINE Mode")
@@ -103,7 +114,16 @@ def getServerIP():
         # Sets Server Ip To your Local Ip address
         server_ip = IPAddr
 
-        startServerOFFLINE(server_ip)
+        start_server_thread = threading.Thread.start(
+            target=startServerOFFLINE(server_ip))
+
+        # Starts Server With Your private
+        start_server_thread.start()
+
+        # cleanly Exits out of online server
+        if (exit(0)):
+            start_server_thread.join()
+            logging.warning("Python Quit Cleanly ")
 
     else:
         print("set server in Online / offline mode to continue")
@@ -112,6 +132,48 @@ def getServerIP():
 
 def startServerOFFLINE(server_ip):
 
+    global server_port
+
+    # creates server Socket grabs socket exeptions
+    logging.info(server_ip)
+
+    udpIP = str(decode.ip_to_uint32(server_ip))
+
+    try:
+        # Creates Udp Scoket with auto Ip Binding
+        # TODO: Work on UDP Port To read from json
+        server = socket.socket(
+            socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+
+        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+        server.bind((udpIP, 8080))
+
+        logging.debug(server)
+
+        logging.info("Socket successfully created")
+
+    except socket.error as error:
+        logging.fatal("SOCKET FAILD WITh ERROR" + error)
+
+    logging.info("Server Socket Connected")
+
+    while True:
+        logging.debug("Server is Active Wating for Client Connetion  ")
+
+        data = server.recv(4096)
+        server.listen()
+
+        logging.info("Received" + data + " from the client")
+
+        if(data == "Hello server"):
+            server.send(("Hello client").encode('utf-8'))
+
+        elif (data == "info"):
+            server.send(usage.CpuStats())
+
+
+def startServerOnline(server_ip):
     global server_port
 
     # creates server Socket grabs socket exeptions
@@ -140,6 +202,7 @@ def startServerOFFLINE(server_ip):
 
     while True:
         logging.debug("Server is Active Wating for Client Connetion  ")
+        logging.debug(usage.CpuStats())
 
         data = server.recv(4096)
         server.listen()
@@ -148,3 +211,5 @@ def startServerOFFLINE(server_ip):
 
         if(data == "Hello server"):
             server.send(("Hello client").encode('utf-8'))
+        elif (data == "info"):
+            server.send(usage.CpuStats())
