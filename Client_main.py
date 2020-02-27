@@ -12,4 +12,4 @@ logging.info("Getting Client Ip")
 Ip.getClientIP()
 
 logging.info("setting Server Ip")
-Ip.setServerIP()
+Ip.ConntectServerIP()

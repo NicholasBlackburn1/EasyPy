@@ -5,9 +5,9 @@ import requests
 import socket
 import logging
 import threading
-
+import json
 import helpers.IpDecode as decode
-import data.ServerUsage as usage
+import psutil
 
 
 """
@@ -104,6 +104,7 @@ def getServerIP():
         # cleanly Exits out of online server
         if (exit(0)):
             server_thread.join()
+            usage.Quit()
             logging.warning("Python Quit Cleanly ")
 
     elif (offline == True):
@@ -123,6 +124,7 @@ def getServerIP():
         # cleanly Exits out of online server
         if (exit(0)):
             start_server_thread.join()
+
             logging.warning("Python Quit Cleanly ")
 
     else:
@@ -133,6 +135,8 @@ def getServerIP():
 def startServerOFFLINE(server_ip):
 
     global server_port
+
+    x = 0
 
     # creates server Socket grabs socket exeptions
     logging.info(server_ip)
@@ -159,18 +163,22 @@ def startServerOFFLINE(server_ip):
     logging.info("Server Socket Connected")
 
     while True:
-        logging.debug("Server is Active Wating for Client Connetion  ")
+        cpu_useage = psutil.cpu_percent(interval=1)
+
+        logging.debug("Server is Active Wating for Client Connetion")
+
+        logging.debug(cpu_useage)
 
         data = server.recv(4096)
         server.listen()
 
         logging.info("Received" + data + " from the client")
 
-        if(data == "Hello server"):
+        if(data == "connected"):
             server.send(("Hello client").encode('utf-8'))
 
         elif (data == "info"):
-            server.send(usage.CpuStats())
+            server.send((cpu_useage))
 
 
 def startServerOnline(server_ip):
@@ -189,7 +197,7 @@ def startServerOnline(server_ip):
 
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-        server.bind((udpIP, 9090))
+        server.bind(('127.0.0.1', 9090))
 
         logging.debug(server)
 
@@ -201,8 +209,10 @@ def startServerOnline(server_ip):
     logging.info("Server Socket Connected")
 
     while True:
-        logging.debug("Server is Active Wating for Client Connetion  ")
-        logging.debug(usage.CpuStats())
+        cpu_useage = psutil.cpu_percent(interval=1)
+
+        logging.debug("Server is Active Wating for Client Connetion")
+        logging.debug(cpu_useage)
 
         data = server.recv(4096)
         server.listen()
@@ -211,5 +221,6 @@ def startServerOnline(server_ip):
 
         if(data == "Hello server"):
             server.send(("Hello client").encode('utf-8'))
+
         elif (data == "info"):
-            server.send(usage.CpuStats())
+            server.send(cpu_useage)

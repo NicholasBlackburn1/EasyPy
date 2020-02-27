@@ -4,7 +4,7 @@
 import requests
 import socket
 import logging
-
+import helpers.IpDecode as decode
 
 """
 IP Address Handler 
@@ -18,10 +18,10 @@ usage:
 """
 
 # Logging for Ips
-logging.basicConfig(filename='Ip.log', level=logging.DEBUG)
+logging.basicConfig(filename='Client.log', level=logging.DEBUG)
 
-Server_UDP_IP = input("ipaddress\n")
-Server_UDP_PORT = input('PORT\n')
+Server_UDP_IP = str(input("ipaddress\n"))
+Server_UDP_PORT = int(input('PORT\n'))
 
 
 # Gets Client Info (like IP and Public Ip )
@@ -43,7 +43,16 @@ def getClientIP():
     logging.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 
-def setServerIP():
+def ConntectServerIP():
     logging.warning("STARTING to Connect to  UDP Server")
     logging.info("ServerIP" + Server_UDP_IP)
     logging.info("ServerPORT" + Server_UDP_PORT)
+
+    ip = decode.ip_to_uint32(Server_UDP_IP)
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+
+        s.connect((ip, 9090))
+        s.sendall("connected")
+
+        data = s.recv(4096)
