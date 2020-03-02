@@ -25,6 +25,7 @@ repositories {
 dependencies {
     compile 'com.jfoenix:jfoenix:9.0.8'
     // This dependency is used by the application.
+    implementation 'com.github.seancfoley:ipaddress:5.2.1'
     implementation 'com.google.guava:guava:28.1-jre'
 
     // Use TestNG framework, also requires calling test.useTestNG() below
