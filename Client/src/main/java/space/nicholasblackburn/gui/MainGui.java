@@ -22,17 +22,11 @@ public class MainGui extends Application {
     @Override
     public void start(final Stage stage) throws Exception {
         // Loads fxml file
+
         try {
-            Controller controller = new Controller();
-            FXMLLoader loader = new FXMLLoader();
-
-            loader.setController(controller);
-
-            final Parent root = FXMLLoader.load(getClass().getResource("/mainpage.fxml"));
-            Scene scene = new Scene(root, 700, 400);
-
-            stage.setTitle("EsayPi Monitor");
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainpage.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
 
@@ -40,18 +34,6 @@ public class MainGui extends Application {
 
             e.printStackTrace();
         }
-
-    }
-
-    public void GraphInit() {
-        xAxis.setLabel("telp");
-
-        xAxis.setAutoRanging(true);
-        xAxis.setTickLabelsVisible(true);
-        xAxis.setTickMarkVisible(true);
-
-        yAxis.setAutoRanging(true);
-        yAxis.setTickLabelsVisible(true);
 
     }
 
