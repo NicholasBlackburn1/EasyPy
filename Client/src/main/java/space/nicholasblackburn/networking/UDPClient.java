@@ -1,5 +1,4 @@
 
-*/
 package space.nicholasblackburn.networking;
 
 import java.io.IOException;
@@ -11,6 +10,8 @@ import java.util.Scanner;
 import com.google.common.net.InetAddresses;
 
 public class UDPClient {
+
+    private static final InetAddress serverAddress = null;
 
     private final DatagramSocket udpSocket;
 
@@ -37,12 +38,11 @@ public class UDPClient {
         String in;
         while (true) {
             in = scanner.nextLine();
-            
-            
-			DatagramPacket p = new DatagramPacket(
-                in.getBytes(), in.getBytes().length, serverAddress, port);
-            
-            this.udpSocket.send(p);                    
+
+            DatagramPacket p = new DatagramPacket(in.getBytes(), in.getBytes().length, serverAddress, port);
+
+            this.udpSocket.send(p);
         }
+    }
 
 }

@@ -12,6 +12,8 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+
+    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 repositories {
@@ -21,6 +23,7 @@ repositories {
 }
 
 dependencies {
+    compile 'com.jfoenix:jfoenix:9.0.8'
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.1-jre'
 
@@ -30,10 +33,17 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'space.nicholasblackburn.App'
+    mainClassName = 'space.nicholasblackburn.gui.MainGui'
 }
 
+javafx {
+    version = '12'
+    modules = [ 'javafx.controls', 'javafx.fxml','javafx.base','javafx.graphics' ]
+}
+
+/* 
 test {
     // Use TestNG for unit tests
     useTestNG()
 }
+*/

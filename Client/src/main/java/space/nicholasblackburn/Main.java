@@ -5,10 +5,12 @@
  */
 package space.nicholasblackburn;
 
+import space.nicholasblackburn.gui.MainGui;
+
 public class Main {
 
-    public static void fxInit() {
+    public static void main(String[] args) {
 
+        MainGui.main(args);
     }
-
 }
