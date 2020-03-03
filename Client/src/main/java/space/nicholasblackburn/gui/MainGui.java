@@ -21,8 +21,6 @@ import space.nicholasblackburn.networking.UDPClient;
 
 public class MainGui extends Application {
 
-    public UDPClient client = new UDPClient();
-
     @Override
     public void start(final Stage stage) throws Exception {
         // Loads fxml file
@@ -37,8 +35,6 @@ public class MainGui extends Application {
 
             Main.logger.info("Showing scene ");
             stage.show();
-
-            client.sendUdp();
 
         } catch (Exception e) {
 
