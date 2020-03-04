@@ -1,5 +1,6 @@
 # EasyPy  
 
+## REQUIRES java 11 jre
 ## The Smallest Remote Server Monitor arround.
 
 ### This Project is For my Computer Science Class / Personal Enrichment 
