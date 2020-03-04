@@ -12,7 +12,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="space.nicholasblackburn.gui.Controller">
+<VBox prefHeight="400.0" prefWidth="640.0" 
+  xmlns="http://javafx.com/javafx/8" 
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="space.nicholasblackburn.controllers.MainPageController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -37,15 +39,15 @@
             <Image url="@pythom.png" />
           </image>
         </ImageView>
-            <JFXPasswordField fx:id="ip" layoutX="47.0" layoutY="273.0" promptText="IP Adress" />
-            <JFXPasswordField fx:id="port" layoutX="47.0" layoutY="309.0" promptText="Port" />
-            <JFXSpinner fx:id="CPU" layoutX="39.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.94" />
-            <JFXSpinner fx:id="RAM" layoutX="261.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.7" />
-            <JFXSpinner fx:id="DISK" layoutX="486.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.56" />
-            <JFXCheckBox fx:id="enablessh" layoutX="242.0" layoutY="358.0" text="Enable SSH" unCheckedColor="BLACK" />
-            <JFXCheckBox fx:id="openlog" layoutX="242.0" layoutY="334.0" prefHeight="0.0" prefWidth="89.0" text="Open Log" unCheckedColor="BLACK" />
-            <JFXToggleButton layoutX="45.0" layoutY="337.0" text="Connect to Server" />
-            <JFXButton fx:id="open" layoutX="454.0" layoutY="156.0" text="open ssh connection" />
+        <JFXPasswordField fx:id="ip" layoutX="47.0" layoutY="273.0" promptText="IP Adress" />
+        <JFXPasswordField fx:id="port" layoutX="47.0" layoutY="309.0" promptText="Port" />
+        <JFXSpinner fx:id="CPU" layoutX="39.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.94" />
+        <JFXSpinner fx:id="RAM" layoutX="261.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.7" />
+        <JFXSpinner fx:id="DISK" layoutX="486.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.56" />
+        <JFXCheckBox fx:id="enablessh" layoutX="242.0" layoutY="358.0" text="Enable SSH" unCheckedColor="BLACK" />
+        <JFXCheckBox fx:id="openlog" layoutX="242.0" layoutY="334.0" prefHeight="0.0" prefWidth="89.0" text="Open Log" unCheckedColor="BLACK" />
+        <JFXToggleButton fx:id="connect" layoutX="45.0" layoutY="337.0" text="Connect to Server" />
+        <JFXButton fx:id="open" layoutX="454.0" layoutY="156.0" text="open ssh connection" />
       </children>
     </AnchorPane>
   </children>

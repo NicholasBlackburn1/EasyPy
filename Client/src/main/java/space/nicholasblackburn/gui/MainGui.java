@@ -1,23 +1,11 @@
 package space.nicholasblackburn.gui;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import space.nicholasblackburn.Main;
-import space.nicholasblackburn.networking.UDPClient;
 
 public class MainGui extends Application {
 
@@ -35,6 +23,8 @@ public class MainGui extends Application {
 
             Main.logger.info("Showing scene ");
             stage.show();
+
+            Main.logger.info("Running upodate");
 
         } catch (Exception e) {
 
