@@ -22,4 +22,12 @@
 5. client displays cpu usage, ram usage , disk io and Cpu Temp      
 
 
+# TO Run  Client
+1. go to Client folder 
+2. run ./gradlew run -> runs Client
+
+# to run Server 
+1. install python libs -> pip3 install -r requirements.txt 
+2. run Server_main.py -> python3 Server_main.py     
+
  
