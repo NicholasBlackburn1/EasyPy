@@ -32,10 +32,14 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import space.nicholasblackburn.Main;
+import space.nicholasblackburn.gui.LogGui;
 
 public class MainPageController implements Initializable {
+
+    private LogGui loggui = new LogGui();
 
     @FXML // fx:id="yAxis"
     private NumberAxis yAxis; // Value injected by FXMLLoader
@@ -88,6 +92,7 @@ public class MainPageController implements Initializable {
 
         connect.setToggleGroup(ConnectGroup);
 
+        // Creates an actiont that runs on a button click
         connect.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -98,6 +103,17 @@ public class MainPageController implements Initializable {
 
             }
         });
+
+        // opens log window
+        openlog.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+
+                // Opens Log Menu
+                openLogHandler();
+            }
+        });
     }
 
     // Simply Calls Function On Open server Button PRess
@@ -106,10 +122,28 @@ public class MainPageController implements Initializable {
         try {
 
             if (this.connect.isSelected()) {
-                Main.logger.warning("ServerHandler");
+                Main.logger.warn("Button pressed opening");
             }
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    // Simply Calls Function On Open server Button PRess
+    public void openLogHandler() {
+
+        Stage stage = new Stage();
+
+        try {
+
+            if (this.openlog.isSelected()) {
+                Main.logger.warn("Logger opeing pressed opening");
+                loggui.start(stage);
+            }
+
+        } catch (final Exception e) {
             e.printStackTrace();
 
         }
@@ -117,13 +151,13 @@ public class MainPageController implements Initializable {
 
     // Returns Ip address typed in by the user
     public String setIpAddress() {
-        Main.logger.warning("IP" + ip.getText());
+        Main.logger.warn("IP" + ip.getText());
         return ip.getText();
     }
 
     // Returns port address typed in by the user
     public String setPortNumber() {
-        Main.logger.warning("Port" + port.getText());
+        Main.logger.warn("Port" + port.getText());
         return port.getText();
     }
 

@@ -5,15 +5,13 @@
  */
 package space.nicholasblackburn;
 
-import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import space.nicholasblackburn.gui.MainGui;
 
 public class Main {
-    public static Logger logger = Logger.getLogger("Client");
+    public static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(final String[] args) {
 
