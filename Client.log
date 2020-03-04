@@ -1,0 +1,126 @@
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.0.1
+INFO:root:ServerPORT8080
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.0.1
+INFO:root:ServerPORT9090
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.0.1[A
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.0.1
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.0.1
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.01
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.0.1
+INFO:root:Getting Client Ip
+INFO:root:Loaded Client IP
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): checkip.amazonaws.com
+DEBUG:requests.packages.urllib3.connectionpool:"GET / HTTP/1.1" 200 15
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your publicIp208.103.119.89
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer Name is:nickthehacker-HP-Laptop-17-by0xxx
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DEBUG:root:Your Computer IP Address is:127.0.1.1
+INFO:root:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:root:setting Server Ip
+WARNING:root:STARTING to Connect to  UDP Server
+INFO:root:ServerIP127.0.0.1

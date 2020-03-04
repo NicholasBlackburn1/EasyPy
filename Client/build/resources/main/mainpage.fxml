@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" 
+  xmlns="http://javafx.com/javafx/8" 
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="space.nicholasblackburn.controllers.MainPageController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+        <LineChart fx:id="chart" layoutX="359.0" layoutY="200.0" prefHeight="196.0" prefWidth="277.0">
+          <xAxis>
+            <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+          </xAxis>
+          <yAxis>
+            <NumberAxis fx:id="yAxis" side="LEFT" />
+          </yAxis>
+        </LineChart>
+        <Text layoutX="43.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C.P.U Usage" wrappingWidth="81.7294921875" />
+        <Text layoutX="265.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ram usage" wrappingWidth="81.7294921875" />
+        <Text layoutX="490.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disk I.O" wrappingWidth="81.7294921875" />
+        <Text layoutX="87.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EASY PY" wrappingWidth="205.7294921875">
+          <font>
+            <Font name="Khmer OS System" size="13.0" />
+          </font>
+        </Text>
+        <ImageView fitHeight="49.0" fitWidth="82.0" layoutX="165.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@pythom.png" />
+          </image>
+        </ImageView>
+        <JFXPasswordField fx:id="ip" layoutX="47.0" layoutY="273.0" promptText="IP Adress" />
+        <JFXPasswordField fx:id="port" layoutX="47.0" layoutY="309.0" promptText="Port" />
+        <JFXSpinner fx:id="CPU" layoutX="39.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.94" />
+        <JFXSpinner fx:id="RAM" layoutX="261.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.7" />
+        <JFXSpinner fx:id="DISK" layoutX="486.0" layoutY="45.0" prefHeight="92.0" prefWidth="89.0" progress="0.56" />
+        <JFXCheckBox fx:id="enablessh" layoutX="242.0" layoutY="358.0" text="Enable SSH" unCheckedColor="BLACK" />
+        <JFXCheckBox fx:id="openlog" layoutX="242.0" layoutY="334.0" prefHeight="0.0" prefWidth="89.0" text="Open Log" unCheckedColor="BLACK" />
+        <JFXToggleButton fx:id="connect" layoutX="45.0" layoutY="337.0" text="Connect to Server" />
+        <JFXButton fx:id="open" layoutX="454.0" layoutY="156.0" text="open ssh connection" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
