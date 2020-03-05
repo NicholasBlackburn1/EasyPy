@@ -5,16 +5,15 @@
  */
 package space.nicholasblackburn;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.io.PrintStream;
+import java.util.logging.Logger;
 
 import space.nicholasblackburn.gui.MainGui;
 
 public class Main {
-    public static final Logger logger = LogManager.getLogger(Main.class);
+    public static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(final String[] args) {
-
         logger.info("loading Javafx client");
 
         MainGui.main(args);

@@ -29,7 +29,7 @@ public class MainGui extends Application {
         } catch (Exception e) {
 
             e.printStackTrace();
-            Main.logger.error("JAVAFX error" + e.getMessage());
+            Main.logger.warning("JAVAFX error" + e.getMessage());
         }
 
     }

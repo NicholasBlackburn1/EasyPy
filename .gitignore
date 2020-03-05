@@ -1,3 +1,16 @@
 .vscode
 *.log
 *.pyc
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+*.class
+Client/*.class
+*.bin
+*.lock
+Client/.gradle
+Client/.gradle/.bin
+Client/.gradle/6.1
+*.class

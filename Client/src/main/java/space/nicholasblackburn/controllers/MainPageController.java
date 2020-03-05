@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 
 import org.checkerframework.checker.units.qual.C;
@@ -35,11 +36,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import space.nicholasblackburn.Main;
-import space.nicholasblackburn.gui.LogGui;
 
 public class MainPageController implements Initializable {
-
-    private LogGui loggui = new LogGui();
 
     @FXML // fx:id="yAxis"
     private NumberAxis yAxis; // Value injected by FXMLLoader
@@ -48,16 +46,13 @@ public class MainPageController implements Initializable {
     private CategoryAxis xAxis; // Value injected by FXMLLoader
 
     @FXML // fx:id="port"
-    private JFXPasswordField port; // Value injected by FXMLLoader
+    private JFXTextField port; // Value injected by FXMLLoader
 
     @FXML
-    private JFXPasswordField ip;
+    private JFXTextField ip;
 
     @FXML // fx:id="CPU"
     public JFXSpinner CPU; // Value injected by FXMLLoader
-
-    @FXML // fx:id="enablessh1"
-    private JFXCheckBox openlog; // Value injected by FXMLLoader
 
     @FXML // fx:id="chart"
     private LineChart<Number, Number> chart; // Value injected by FXMLLoader
@@ -105,13 +100,13 @@ public class MainPageController implements Initializable {
         });
 
         // opens log window
-        openlog.setOnAction(new EventHandler<ActionEvent>() {
+        enablessh.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
 
                 // Opens Log Menu
-                openLogHandler();
+                openSSHHandler();
             }
         });
     }
@@ -122,7 +117,11 @@ public class MainPageController implements Initializable {
         try {
 
             if (this.connect.isSelected()) {
-                Main.logger.warn("Button pressed opening");
+
+                Main.logger.info("IPADRESS\n" + setIpAddress());
+                Main.logger.info("Port\n" + setPortNumber());
+
+                Main.logger.warning("Connecting to Server");
             }
 
         } catch (final Exception e) {
@@ -132,15 +131,13 @@ public class MainPageController implements Initializable {
     }
 
     // Simply Calls Function On Open server Button PRess
-    public void openLogHandler() {
-
-        Stage stage = new Stage();
+    public void openSSHHandler() {
 
         try {
 
-            if (this.openlog.isSelected()) {
-                Main.logger.warn("Logger opeing pressed opening");
-                loggui.start(stage);
+            if (this.enablessh.isSelected()) {
+                Main.logger.warning("SSH ENABLED");
+
             }
 
         } catch (final Exception e) {
@@ -151,13 +148,13 @@ public class MainPageController implements Initializable {
 
     // Returns Ip address typed in by the user
     public String setIpAddress() {
-        Main.logger.warn("IP" + ip.getText());
+        Main.logger.warning("IP" + ip.getText());
         return ip.getText();
     }
 
     // Returns port address typed in by the user
     public String setPortNumber() {
-        Main.logger.warn("Port" + port.getText());
+        Main.logger.warning("Port" + port.getText());
         return port.getText();
     }
 
