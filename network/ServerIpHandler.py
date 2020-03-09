@@ -145,7 +145,7 @@ def startServerOFFLINE(server_ip):
         # Creates Udp Scoket with auto Ip Binding
         # TODO: Work on UDP Port To read from json
         server = socket.socket(
-            socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+            socket.AF_INET, socket.SOCK_DGRAM, socket.SOCK_STREAM)
 
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
@@ -188,10 +188,10 @@ def startServerOnline(server_ip):
     udpIP = str(decode.ip_to_uint32(server_ip))
 
     try:
-        # Creates Udp Scoket with auto Ip Binding
+        # Creates Tcp Scoket with auto Ip Binding
         # TODO: Work on UDP Port To read from json
         server = socket.socket(
-            socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+            socket.AF_INET, socket.SOCK_DGRAM, socket.SOCK_STREAM)
 
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 

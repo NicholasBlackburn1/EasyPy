@@ -3,42 +3,32 @@
  */
 package space.nicholasblackburn.controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 
-import org.checkerframework.checker.units.qual.C;
-
-import inet.ipaddr.AddressStringException;
-import inet.ipaddr.IPAddress;
-import inet.ipaddr.IPAddressString;
-import inet.ipaddr.IncompatibleAddressException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import space.nicholasblackburn.Main;
+import space.nicholasblackburn.networking.Respond;
 
 public class MainPageController implements Initializable {
 
+    Respond respond;
     @FXML // fx:id="yAxis"
     private NumberAxis yAxis; // Value injected by FXMLLoader
 
@@ -76,14 +66,18 @@ public class MainPageController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
+
         // Chart config for tile and x and y axis
         xAxis.setLabel("heat");
         yAxis.setLabel("cpu speed");
         chart.setTitle("Server Effenciety");
 
+        // sets proress display to
         RAM.progressProperty().set(0);
         CPU.progressProperty().set(0);
         DISK.progressProperty().set(0);
+
+        // ip.setTextFormatter(new TextFormatter<>(ipAddressFilter));
 
         connect.setToggleGroup(ConnectGroup);
 
@@ -118,10 +112,19 @@ public class MainPageController implements Initializable {
 
             if (this.connect.isSelected()) {
 
-                Main.logger.info("IPADRESS\n" + setIpAddress());
+                // ain.logger.info("IPADRESS\n" + setIpAddress());
                 Main.logger.info("Port\n" + setPortNumber());
 
                 Main.logger.warning("Connecting to Server");
+                validateIP(ip.getText());
+
+                
+
+                // RESPOND2.sendConnection("Conneted");
+
+            } else {
+                Main.logger.warning("Disconnected From Server");
+
             }
 
         } catch (final Exception e) {
@@ -138,6 +141,8 @@ public class MainPageController implements Initializable {
             if (this.enablessh.isSelected()) {
                 Main.logger.warning("SSH ENABLED");
 
+            } else {
+                Main.logger.warning("SSH DISABLED");
             }
 
         } catch (final Exception e) {
@@ -146,21 +151,21 @@ public class MainPageController implements Initializable {
         }
     }
 
-    // Returns Ip address typed in by the user
-    public String setIpAddress() {
-        Main.logger.warning("IP" + ip.getText());
-        return ip.getText();
+    public void validateIP(final String ipStr) {
+        final String regex = "\\b((25[0–5]|2[0–4]\\d|[01]?\\d\\d?)(\\.)){3}(25[0–5]|2[0–4]\\d|[01]?\\d\\d?)\\b";
+        if (Pattern.matches(regex, ipStr)) {
+            Main.logger.info(ipStr + "Valid ip");
+            validpi = ipStr.getBytes();
+
+        } else {
+            Main.logger.warning("Cannot vaidate IP");
+        }
     }
 
     // Returns port address typed in by the user
     public String setPortNumber() {
         Main.logger.warning("Port" + port.getText());
         return port.getText();
-    }
-
-    public IPAddress convertStringtoIP() throws AddressStringException, IncompatibleAddressException {
-
-        return new IPAddressString(setIpAddress()).toAddress();
     }
 
 }

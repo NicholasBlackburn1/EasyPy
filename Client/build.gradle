@@ -20,12 +20,19 @@ repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    maven{
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+
+    }
 }
 
 dependencies {
+    compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '1.0.0-SNAPSHOT'
+
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.1'
     compile 'com.jfoenix:jfoenix:9.0.8'
+    
     // This dependency is used by the application.
     implementation 'com.github.seancfoley:ipaddress:5.2.1'
     implementation 'com.google.guava:guava:28.1-jre'
